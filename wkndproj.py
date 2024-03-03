@@ -51,12 +51,14 @@ def shopping_cart():
                 print('No items in cart.')      
             else:
                 print('Hope you found everything you need!')
+                print('='*25)
                 print('Your reciept:')
                 total = 0
                 for name, details in cart.items():
                     total += details['quantity'] * details['price']
                     print(f"\t{name} X {details['quantity']} @ ${details['price']}")
             print(f'Your grand total today is: ${total:.2f}')
+            print('='*25)
             print('Thank you for shopping with us today and we hope to see you soon :)')
             break
         else:
