@@ -4,7 +4,7 @@ def shopping_cart():
         entry = input('What would you like to do? Please type "add", "remove", "show", or "finish"').lower()
         if entry == 'add':
             name = input('What would you like to add to your cart?').title()
-            # price = float(input(f'How much does one {name} cost? - Please enter numerical value (i.e. \'2.50\')')) -- only want to ask for price if item not yet in cart
+            # price = float(input(f'How much does one {name} cost? - Please enter numerical value (i.e. \'2.50\')'))
             while True:
                 quantity_input = input(f"How many {name}'s would you like to add? - Please enter numerical value (i.e. '5' not 'five')")
                 if quantity_input.isdigit():
@@ -23,7 +23,13 @@ def shopping_cart():
             if removed_item not in cart:
                 print(f'{removed_item} not found in your cart')
             else:
-                remove_qty = int(input(f'How many {removed_item}\'s would you like to remove?'))
+                while True:
+                    remove_qty_input = input(f'How many {removed_item}\'s would you like to remove?')
+                    if remove_qty_input.isdigit():
+                        remove_qty = int(remove_qty_input)
+                        break
+                    else:
+                        print('Ivalid entry - please input numerical digit value')
                 if remove_qty >= cart[removed_item]['quantity']:
                     del cart[removed_item]
                     print(f'All {removed_item}\'s removed from cart!')
