@@ -4,9 +4,10 @@ def shopping_cart():
         entry = input('What would you like to do? Please type "add", "remove", "show", or "finish"').lower()
         if entry == 'add':
             name = input('What would you like to add to your cart?').title()
-            price = float(input(f'How much does one {name} cost? - Please enter numerical value (i.e. \'2.50\')'))
+            # price = float(input(f'How much does one {name} cost? - Please enter numerical value (i.e. \'2.50\')')) -- only want to ask for price if item not yet in cart
             quantity = int(input(f"How many {name}'s would you like to add? - Please enter numerical value (i.e. '5' not 'five')"))
             if name not in cart:
+                price = float(input(f'How much does one {name} cost? - Please enter numerical value (i.e. \'2.50\')'))
                 cart[name] = {'quantity': quantity, 'price': price}
             else:
                 cart[name]['quantity'] += quantity
