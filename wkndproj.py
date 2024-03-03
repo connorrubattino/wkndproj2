@@ -5,7 +5,13 @@ def shopping_cart():
         if entry == 'add':
             name = input('What would you like to add to your cart?').title()
             # price = float(input(f'How much does one {name} cost? - Please enter numerical value (i.e. \'2.50\')')) -- only want to ask for price if item not yet in cart
-            quantity = int(input(f"How many {name}'s would you like to add? - Please enter numerical value (i.e. '5' not 'five')"))
+            while True:
+                quantity_input = input(f"How many {name}'s would you like to add? - Please enter numerical value (i.e. '5' not 'five')")
+                if quantity_input.isdigit():
+                    quantity = int(quantity_input)
+                    break
+                else:
+                    print('Ivalid entry - please input numerical digit value')
             if name not in cart:
                 price = float(input(f'How much does one {name} cost? - Please enter numerical value (i.e. \'2.50\')'))
                 cart[name] = {'quantity': quantity, 'price': price}
